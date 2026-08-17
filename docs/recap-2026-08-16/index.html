@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Recap — sovereign PMO framing, four pages · EVEglyphDesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf4;
+  --cream-2: #f7f2e7;
+  --ink: #1a1a1a;
+  --line: #e7e1d3;
+  --mute: #6b665c;
+  --accent: #e87722;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 32px 22px 96px; }
+header.masthead {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+header.masthead .brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+header.masthead .brand .accent { color: var(--accent); }
+header.masthead .meta { font-size: 12px; color: var(--mute); text-align: right; }
+h1, h2, h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+h1 { font-size: 38px; margin: 8px 0 8px; letter-spacing: -0.01em; }
+.subtitle { font-family: "Fraunces", Georgia, serif; font-size: 20px; color: var(--mute); margin: 0 0 28px; font-weight: 400; font-style: italic; }
+h2 { font-size: 26px; margin: 48px 0 14px; padding-top: 16px; border-top: 1px solid var(--line); }
+h2 .num { color: var(--accent); font-weight: 400; font-style: italic; margin-right: 10px; }
+h3 { font-size: 19px; margin: 26px 0 8px; }
+p { margin: 0 0 14px; }
+ul, ol { margin: 0 0 16px; padding-left: 22px; }
+li { margin: 0 0 8px; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(232,119,34,0.35); }
+a:hover { border-bottom-color: var(--accent); }
+strong { font-weight: 600; }
+em { font-style: italic; }
+hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+.pullquote {
+  border-left: 3px solid var(--accent);
+  background: var(--cream-2);
+  padding: 14px 18px;
+  margin: 18px 0 22px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+}
+.pullquote .attrib { display: block; font-family: "Inter", sans-serif; font-style: normal; font-size: 13px; color: var(--mute); margin-top: 8px; letter-spacing: 0.02em; }
+.card {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin: 16px 0 20px;
+}
+.card h3 { margin-top: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0 24px; }
+.two-col .col {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+.two-col .col h3 { margin-top: 0; font-size: 17px; }
+.two-col .col h3 .tag { display: inline-block; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-left: 8px; vertical-align: middle; }
+@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+.closing { text-align: center; color: var(--mute); font-size: 15px; margin-top: 40px; font-style: italic; font-family: "Fraunces", Georgia, serif; }
+footer.colophon {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--mute);
+  line-height: 1.55;
+}
+footer.colophon a { color: var(--mute); border-bottom-color: rgba(107,102,92,0.4); }
+.toc {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 8px 0 32px;
+  font-size: 15px;
+}
+.toc ol { margin: 6px 0 0; padding-left: 22px; }
+.toc li { margin: 0 0 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="brand">EVEglyph<span class="accent">Design</span></div>
+  <div class="meta">Recap · working notes<br>16 August 2026</div>
+</header>
+
+<h1>Sovereign PMO — the four-page recap</h1>
+<p class="subtitle">Shift from vendor-led discovery to client-led. A framing walk-through, not a proposal.</p>
+
+<p>These are the four pages sketched by hand on 16 August 2026, rewritten as a single read so we can walk them together. Nothing here is a decision. It is the framing I want to be sure we share before we talk about a role, a team, or a plan.</p>
+
+<div class="toc">
+  <strong>What is on this page</strong>
+  <ol>
+    <li>The estate — sovereign vs rented</li>
+    <li>Why the familiar shape lands at fifty percent</li>
+    <li>The sovereign PMO, as roles around one table</li>
+    <li>Decision Intelligence — the framework that centralises discovery</li>
+    <li>What I would want us to agree on before the next conversation</li>
+  </ol>
+</div>
+
+<h2><span class="num">1</span>The estate — sovereign vs rented</h2>
+
+<p>Any transformation programme is inherited on two sides at once. On one side is the estate the company already runs; on the other is the estate the company could own. The first job is to be able to point at a system and say honestly which side it sits on.</p>
+
+<div class="two-col">
+  <div class="col">
+    <h3>Sovereign — new world <span class="tag">owned</span></h3>
+    <ul>
+      <li>A PMO tool built on an <strong>advanced, data-driven assessment</strong>, run by an agent that lives in the client's own DMZ and reaches into the hyperscaler the client already pays for.</li>
+      <li><strong>ACDOCA as the ledger spine</strong>, read through a <strong>datasphere semantic layer</strong> the client controls — so the same numbers a vendor would show back live under a client authority.</li>
+      <li>An <strong>extended ledger / data lake</strong> that the sovereign agent structure both reads and writes.</li>
+      <li>Outputs land in a <strong>Decision Intelligence Center of Excellence</strong>, backed by a <strong>quantified business case</strong> and eDiscovery tooling.</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h3>Rented — old world <span class="tag">inherited</span></h3>
+    <ul>
+      <li>A single S/4 future state on paper, sitting on top of <strong>many ECCs</strong> in practice.</li>
+      <li><strong>PTP fractured</strong> across many brands and many SAPs.</li>
+      <li>Focus is <strong>additive</strong> — new modules, new licences — and the technical leakage compounds underneath.</li>
+    </ul>
+  </div>
+</div>
+
+<p>Between the two sides is a semantic mirror. Same ledger, different authority. The reason to draw the picture is not to reject the rented estate — it is to make the sovereign estate <em>nameable</em>, so a domain lead can say <em>this system is sovereign, that one is rented</em> without the room dissolving into vendor grammar.</p>
+
+<div class="card">
+  <h3>What the CIO takeaway actually is</h3>
+  <p>A transformation programme is judged by two things, not by the count of go-lives: <strong>OpEx efficiency booked inside SAP</strong>, and <strong>CapEx strategy that appreciates a sovereign domain the client owns</strong>. The PMO's business cases have to be quantified from <strong>source data</strong>, not from vendor slides. That is the capital-asset lens.</p>
+</div>
+
+<h2><span class="num">2</span>Why the familiar shape lands at fifty percent</h2>
+
+<p>There is a familiar shape in large programmes: Ariba stitched to S/4, no-PO-no-pay as the control, invoice-to-cash as the value chain, a big SI holding the P2P and R2R actualisation. On paper the architecture is correct. In the room, the case lives or dies on whether that partnership actually closes the last mile.</p>
+
+<p>The honest number, when it does not, is roughly <strong>fifty percent</strong>. Half the invoices do not land against the control the business case was sold on. The software is fine. The <em>partnership model</em> is where the case leaks out.</p>
+
+<div class="pullquote">
+  You are still describing the steps to do, rather than the expected outcome — <em>why</em> and <em>how</em> is it better or different from what they might be doing already.
+  <span class="attrib">— note left on the page</span>
+</div>
+
+<p>That note is the right redirect, and it applies here as much as it applied to the drawing. A CIO sponsor does not buy an activity map. She buys a <strong>delta</strong>. So the question we should be able to answer, plainly, is not "does the sovereign PMO tool have these features," it is:</p>
+
+<div class="card">
+  <p><strong>Why does this model close the fifty-percent gap that the Ariba-plus-S/4-plus-large-SI shape leaves open?</strong></p>
+  <p>The answer, one line at a time: because the no-PO-no-pay control is owned from the <em>ledger side</em>, not reconciled quarterly from the vendor side; because the DI centre of excellence measures the hit rate against ACDOCA in real time; because the sovereign agent structure keeps the work list inside a repository the client governs, so supplier alignment stops falling into the crack between the SI and the SAP AE.</p>
+</div>
+
+<h2><span class="num">3</span>The sovereign PMO, as roles around one table</h2>
+
+<p>The traditional discovery-and-planning phase is <strong>vendor-led</strong>. An SAP account executive fronts it. System integrators sit underneath as channel partners. Nobody in that arrangement is compensated on the outcome; everyone is compensated on the sale. The roll-up that comes out of it is opinion-shaped and depends heavily on who happened to be in the room.</p>
+
+<p>The counter-move is not a different vendor. It is a different <em>authority</em>.</p>
+
+<div class="card">
+  <h3>A sovereign team, by role</h3>
+  <ul>
+    <li>A <strong>Finance Director</strong> as the sponsor of the case — the person who signs against the number.</li>
+    <li>A <strong>CIO</strong> as the sovereign of the estate — the person who says which systems are the record.</li>
+    <li>A <strong>Data lead</strong> — the person who says which datasets are trusted.</li>
+    <li>A <strong>Platforms lead</strong> — the person who says what the hyperscaler and integration surface actually support.</li>
+    <li>A <strong>Strategic Projects lead</strong> — the person carrying the MVPs the programme has to demonstrate.</li>
+    <li>Around them, a <strong>Steering Committee</strong> that meets both the management opinion and the source data at the same table.</li>
+  </ul>
+</div>
+
+<p>The PMO's job, inside that room, is to <strong>look both ways</strong>. Up, at the management opinion of what the programme should deliver. Down, at whether the underlying data agrees. Business benefit is only real when the two agree, and the PMO is the surface on which they are made to agree.</p>
+
+<p>Practically, that means:</p>
+
+<ul>
+  <li>Use <strong>structured repositories</strong> to ingest every existing material — decks, SOWs, SI deliverables, vendor pitches — alongside existing sovereign source data.</li>
+  <li>Build a <strong>Decision Intelligence PMO dashboard</strong> off that ingested base.</li>
+  <li>Baseline every project artifact against <strong>chosen</strong> standards. Not whatever standards the previous SI happened to leave behind — standards the sovereign team picked and can defend.</li>
+</ul>
+
+<div class="pullquote">
+  Shift from vendor-led discovery to client-led.
+  <span class="attrib">— the one-line thesis</span>
+</div>
+
+<div class="card">
+  <h3>Trust boundary for AI, plainly stated</h3>
+  <p>Inside this model, <strong>AI trust is limited to data processing of large datasets</strong>. The AI is not the strategist and not the decider. It is the instrument that makes the sovereign-source lookback tractable at enterprise scale. Every workstream that touches an operational system arrives with a stated <em>what for</em>. Loading intelligence onto an operational system without that "what for" is the vendor-led move this model is meant to replace.</p>
+</div>
+
+<h2><span class="num">4</span>Decision Intelligence — the framework that centralises discovery</h2>
+
+<p>Inside the sovereign estate, the word <em>AI</em> is not the label. It is the synonym.</p>
+
+<div class="pullquote">
+  Decision Intelligence Framework — synonym: AI.
+</div>
+
+<p>That reframing matters. It moves the conversation off the vendor's vocabulary and onto a vocabulary the boardroom can govern. AI, as a boardroom term, has been trained by three years of pitch decks. Decision Intelligence is what the discipline actually is inside a sovereign estate: a framework for balancing management opinion against source data, and returning prioritised work to the systems that already run the business.</p>
+
+<p>The framework runs in four moves, in order:</p>
+
+<div class="card">
+  <h3>1 · Read the source, in place</h3>
+  <p>Analyse sovereign source data <em>wherever it lives today</em> — through standard data extractors or an existing data lake. The framework does not require a migration to work. That is the sovereignty stance made practical: it reads through the egress the estate already has.</p>
+</div>
+
+<div class="card">
+  <h3>2 · Ingest the vendor materials, into the client's index</h3>
+  <p>Every third-party vendor material — every deck, every SOW, every SI artifact — is pulled into an <strong>AI-efficient, indexed, structured repository the client owns</strong>. The vendor materials become evidence in the client's index, not orphans on the vendor's SharePoint. This is the direct counter-move to the opinion-shaped roll-up.</p>
+</div>
+
+<div class="card">
+  <h3>3 · Quantify on two clocks at once</h3>
+  <p>Identify quantitative economic benefits. Prioritise <strong>technical leakage</strong> on the near clock — the rented estate's fractured PTP is where the money is being lost this quarter. Simultaneously consider the <strong>future-state primary technical barriers</strong> of the entire estate on the longer clock. Two clocks, held without collapsing one into the other.</p>
+</div>
+
+<div class="card">
+  <h3>4 · Feed work lists back into the operational systems</h3>
+  <p>Identify early value-capture targets and begin feeding <strong>Decision Intelligence work lists</strong> into the operational systems the client already runs. The framework does not sit in a slide. It writes back. This is where the AI trust boundary becomes concrete: the AI produces the prioritised work; humans in the existing systems execute it.</p>
+</div>
+
+<p>Read together, that is what "centralising discovery under the sovereign" means in practice. Not a new tower next to SAP and the SI — a layer that pulls the vendor materials, the source data, and the work lists under <strong>one authority</strong>, and that authority is the company, not an external party.</p>
+
+<h2><span class="num">5</span>What I would want us to agree on before the next conversation</h2>
+
+<p>These are the framings I want us to share as a starting point. If any of them are wrong for you, that is the more useful conversation than the plan.</p>
+
+<ol>
+  <li>That a domain can be named <strong>sovereign</strong> or <strong>rented</strong>, and that the PMO's job is to know which is which.</li>
+  <li>That the outcome delta a CIO buys is not the activity map, it is <strong>the closing of the fifty-percent gap</strong> the familiar shape leaves open.</li>
+  <li>That the PMO <strong>looks both ways</strong> — management opinion up, source data down — and baselines both against <strong>chosen</strong> standards.</li>
+  <li>That <strong>AI is a synonym for the Decision Intelligence framework</strong>, and its trust boundary is data processing of large datasets, not strategy and not decision.</li>
+  <li>That discovery is <strong>client-led</strong>, and that the vendor and the SI are evidence sources for the client's index, not the authority above it.</li>
+</ol>
+
+<div class="closing">Pour le bien-être du peuple.</div>
+
+<footer class="colophon">
+  Working recap of hand-drawn framing pages, 16 August 2026. Not a proposal. Names of individuals deliberately omitted; roles only. Public surface, <code>noindex</code>. Palette cream <code>#fdfaf4</code>, ink <code>#1a1a1a</code>, accent <code>#e87722</code>. Fraunces display, Inter body. © 2026 EVEglyphDesign.
+</footer>
+
+</div>
+</body>
+</html>
