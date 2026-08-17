@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Richemont — Data-Layer Prep for Lillian · EVEglyphDesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf4;
+  --cream-2: #f7f2e7;
+  --ink: #1a1a1a;
+  --line: #e7e1d3;
+  --mute: #6b665c;
+  --accent: #e87722;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 32px 22px 96px; }
+header.masthead {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+header.masthead .brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+header.masthead .brand .accent { color: var(--accent); }
+header.masthead .meta { font-size: 12px; color: var(--mute); text-align: right; }
+h1, h2, h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+h1 { font-size: 38px; margin: 8px 0 24px; letter-spacing: -0.01em; }
+h2 { font-size: 26px; margin: 44px 0 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+h3 { font-size: 20px; margin: 28px 0 10px; }
+p { margin: 0 0 14px; }
+ul, ol { margin: 0 0 16px; padding-left: 22px; }
+li { margin: 0 0 8px; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(232,119,34,0.35); }
+a:hover { border-bottom-color: var(--accent); }
+strong { font-weight: 600; }
+hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+.closing { text-align: center; color: var(--mute); font-size: 15px; margin-top: 32px; }
+footer.colophon {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+footer.colophon a { color: var(--mute); border-bottom-color: rgba(107,102,92,0.4); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+  <div class="brand">EVEglyph<span class="accent">Design</span></div>
+  <div class="meta">Prep · Richemont<br>16 August 2026</div>
+</header>
+<h1>Richemont — What "data" actually means</h1>
+<p>A briefing for Lillian ahead of the Richemont second interview. Every claim below has</p>
+<p>a source in one of the five detail files in this repo.</p>
+<h2>The one-line frame</h2>
+<p>Richemont is not one company with one ERP. It is roughly <strong>twenty Maisons</strong> sitting on</p>
+<p>top of <strong>~120 SAP instances</strong> (<a href="https://www.businesswire.com/news/home/20211122005617/en/Richemont-Selects-AWS-as-Its-Preferred-Cloud-Provider-to-Drive-Product-Innovation">Businesswire</a>),</p>
+<p>each Maison carrying its own manufacturing model, its own uniqueness pattern, its own</p>
+<p>regulatory surface, and — because the Group grew by acquisition since 1979 — its own</p>
+<p>ERP heritage that has been folded in one Maison at a time. The transformation is called</p>
+<p><strong>"New Foundations"</strong> and it is a <strong>Bluefield S/4HANA</strong> conversion built on an internal</p>
+<p>template known as <strong>"Gemini"</strong> (successor to an earlier "SAP Tiger" template)</p>
+<p>(<a href="https://undisturbed.blog/articles/richemont">Undisturbed</a>). Anyone who says "data</p>
+<p>transformation" at Richemont is really saying: reconcile twenty Maisons onto one</p>
+<p>template without breaking a serialized High Jewellery piece, a Kimberley certificate, or</p>
+<p>a Swiss-Made bill-of-materials cost split.</p>
+<h2>SAP landscape — the count and what runs on it</h2>
+<ul>
+<li><strong>~120 SAP instances</strong> were migrated to AWS by end-2022 as the platform for the</li>
+</ul>
+<p>  transformation (<a href="https://www.businesswire.com/news/home/20211122005617/en/Richemont-Selects-AWS-as-Its-Preferred-Cloud-Provider-to-Drive-Product-Innovation">Businesswire</a>).</p>
+<ul>
+<li>The <strong>Gemini</strong> template covers Finance, Controlling, Sales, Retail, Supply Chain,</li>
+</ul>
+<p>  Procurement, EWM, and Master Data Governance, and is the target state for every</p>
+<p>  Maison. Buccellati was explicitly still being migrated onto Gemini as of a 2025 job</p>
+<p>  posting, which tells you the rollout is not finished.</p>
+<ul>
+<li>Around Gemini sits <strong>SuccessFactors + Concur</strong> (HR/travel), **BW/4HANA + Datasphere +</li>
+</ul>
+<p>  SAP Analytics Cloud<strong> (the data platform), </strong>SAP Commerce Cloud (Hybris)** (Maison</p>
+<p>  e-commerce fronts), and a <strong>Fashion Management</strong> stack that is the successor to</p>
+<p>  IS-AFS for the fashion/leather Maisons (Chloé, Alaïa, Peter Millar).</p>
+<ul>
+<li>Non-SAP satellites that Lillian will inevitably meet: <strong>ELEVATE</strong> — the Salesforce +</li>
+</ul>
+<p>  Google Cloud clienteling platform, ~10,000 users, 45 markets, 11+ brands</p>
+<p>  (<a href="https://www.salesforce.com/eu/blog/richemont-maisons-delight-customers/">Salesforce</a>) —</p>
+<p>  <strong>Workday HCM</strong> going live 2026 in parallel with SuccessFactors, and <strong>Cegid Y2</strong> as</p>
+<p>  the POS layer in most boutiques. Salesforce is where the client-master lives;</p>
+<p>  Cegid is where the transaction happens; SAP is where the finance and inventory land.</p>
+<p>  Three systems, one client, one sale — and that seam is where most of the "data"</p>
+<p>  problems actually sit.</p>
+<p>Full detail: <a href="./sap-landscape.md">`sap-landscape.md`</a>.</p>
+<h2>Acquisition heritage — why one template is hard</h2>
+<p>The Maisons did not arrive at Richemont as a set. They arrived over 46 years, each</p>
+<p>with its own ERP:</p>
+<ul>
+<li><strong>1979</strong> Cartier Monde; <strong>1988</strong> Piaget and Baume & Mercier; <strong>1993</strong> Vendôme</li>
+</ul>
+<p>  (Montblanc, Chloé, Dunhill, Lancel); <strong>1996</strong> Vacheron Constantin; <strong>1999–2003</strong></p>
+<p>  Van Cleef & Arpels; <strong>2000</strong> LMH (IWC, Jaeger-LeCoultre, A. Lange & Söhne);</p>
+<p>  <strong>2012</strong> Peter Millar; <strong>2018</strong> Watchfinder; <strong>2019</strong> Buccellati; <strong>2021</strong> Delvaux;</p>
+<p>  <strong>2023–24</strong> Gianvito Rossi; <strong>September 2024</strong> Vhernier for €94m</p>
+<p>  (<a href="https://www.richemont.com/news-media/press-releases-news/">Richemont press releases, chronologically archived on richemont.com/news-media</a>).</p>
+<ul>
+<li>Divestitures matter as much as acquisitions. **YNAP was sold to Mytheresa in April</li>
+</ul>
+<p>  2025** with a 33% retained stake in LuxExperience (<a href="https://www.richemont.com/news-media/press-releases-news/myt-netherlands-parent-bv-mytheresa-and-richemont-sign-agreement-for-mytheresa-to-acquire-yoox-net-a-porter-ynap/">Richemont</a>),</p>
+<p>  which was never on Gemini core — it ran IBM WebSphere/OMS, Centric PLM, and RELEX</p>
+<p>  demand-planning. <strong>Baume & Mercier was sold to Damiani, closing 1 July 2026</strong></p>
+<p>  (<a href="https://www.richemont.com/news-media/press-releases-news/richemont-and-the-damiani-group-announce-the-completion-of-the-acquisition-of-baume-mercier-by-the-damiani-group/">Richemont</a>),</p>
+<p>  with Richemont providing transition services — a live carve-out of that Maison's</p>
+<p>  vendor master, ValFleurier movement-supply agreements, and Business Network</p>
+<p>  connections.</p>
+<ul>
+<li>Two Maisons are worth naming for the interview because they are visibly *not* on</li>
+</ul>
+<p>  Gemini yet: <strong>Buccellati</strong> (still migrating, per the 2025 ad) and <strong>Vhernier</strong> (still</p>
+<p>  has its own IT Director post-acquisition, September 2024).</p>
+<p>Lillian's line if asked "how hard is the data": *twenty Maisons acquired over</p>
+<p>forty-six years is twenty different legacy article-masters, twenty different</p>
+<p>vendor-masters, twenty different chart-of-accounts translations — Bluefield preserves</p>
+<p>history, so all of that has to be reconciled at the record level, not just at the</p>
+<p>report level.*</p>
+<p>Full detail: <a href="./acquisition-erp-heritage.md">`acquisition-erp-heritage.md`</a>.</p>
+<h2>The article-master — what a SKU actually is at Richemont</h2>
+<p>This is where a claim about *data* has to survive its first follow-up question. The</p>
+<p>Maisons do not run one SKU pattern. They run three in parallel, and Bluefield has to</p>
+<p>carry all three:</p>
+<ol>
+<li>1. <strong>Collection / grid production</strong> — Love bracelets, Alhambra pendants, Panthère</li>
+</ol>
+<p>   watches. Style × metal × size × gem variants. This is conventional retail SKU</p>
+<p>   logic, and it maps cleanly to SAP Variant Configuration (LO-VC): one super-BOM,</p>
+<p>   one configuration profile, avoid one material master per combination</p>
+<p>   (<a href="https://help.sap.com/docs/SAP_ERP/61155ee7ed304ae8b66b7526555a6a07/1a40b953495bb44ce10000000a174cb4.html">SAP Help</a>).</p>
+<ol>
+<li>2. <strong>Serialized small series</strong> — every mechanical watch, every limited edition.</li>
+</ol>
+<p>   Individually numbered, matched to a certificate. Panerai's special-edition tier</p>
+<p>   runs ~2–2,000 pieces per reference (<a href="https://panerai.watchlounge.com/introduction/">Watchlounge</a>).</p>
+<p>   Cartier has engraved serial numbers on every genuine piece since 1970 (<a href="https://hautane.com/en/guides/authentification/authentifier-bijoux-cartier">Hautane</a>).</p>
+<ol>
+<li>3. <strong>One-of-a-kind</strong> — most Cartier and VCA High Jewellery. The 2026 VCA "Fascinating</li>
+</ol>
+<p>   Egypt" collection is one-of-a-kind bracelets (<a href="https://www.townandcountrymag.com/style/jewelry-and-watches/a71424528/van-cleef-arpels-egyptian-high-jewelry-collection-2026/">Town & Country</a>).</p>
+<p>   One material number equals one physical object, and there is no repeat production.</p>
+<p>Order-of-magnitude counts Lillian can quote:</p>
+<ul>
+<li><strong>Cartier</strong>: ~1,400+ current catalog *models* on the storefront (254 watch models +</li>
+</ul>
+<p>  1,137–1,287 jewellery models depending on locale) (<a href="https://www.cartier.com/en-fr/watches/collections">Cartier.com watches</a>,</p>
+<p>  <a href="https://www.cartier.com/en-it/jewellery/collections">Cartier.com jewellery IT</a>),</p>
+<p>  unpacking to <strong>3,000–10,000+ distinct material numbers</strong> once size/metal/gem</p>
+<p>  variants each get their own article. The vintage/heritage archive adds thousands more:</p>
+<p>  Sotheby's 2026 "Shapes of Cartier" sale alone catalogued 300+ vintage watch</p>
+<p>  references from a single 25-year collection (<a href="https://www.bloomberg.com/news/articles/2026-04-08/largest-vintage-cartier-watch-collection-to-be-sold-by-sotheby-s">Bloomberg</a>).</p>
+<ul>
+<li><strong>IWC</strong> ~215 active references, <strong>Piaget</strong> ~400–441, <strong>A. Lange & Söhne</strong> ~92,</li>
+</ul>
+<p>  <strong>Jaeger-LeCoultre</strong> 1,200+ calibres historically (<a href="https://www.coveted.com/discover/a-lange-sohne-watches">Coveted</a>,</p>
+<p>  <a href="https://watchbase.com/blog/tag/iwc">WatchBase</a>, <a href="https://quillandpad.com/2022/03/27/dandy-watches-of-piaget-reprise-2/">Quill & Pad</a>).</p>
+<ul>
+<li><strong>Van Cleef & Arpels</strong> publishes no reference count — High Jewellery is</li>
+</ul>
+<p>  "produced in limited quantities or as one-of-a-kind creations" (<a href="https://www.sothebys.com/en/articles/a-look-into-the-world-of-van-cleef-arpels-high-jewelry">Sotheby's</a>).</p>
+<ul>
+<li><strong>YNAP</strong> was hundreds of thousands of SKUs pre-sale — a benchmark of what Richemont</li>
+</ul>
+<p>  chose to divest rather than absorb (<a href="https://www.centricsoftware.com/success-stories/yoox-net-a-porter/">Centric Software</a>).</p>
+<p>Then there is the depth *behind* each SKU. A standard mechanical movement carries</p>
+<p>~130 components in three sub-assemblies; grand complications go past 250; Patek's</p>
+<p>Grandmaster Chime is 1,366 parts; Vacheron's Reference 57260 is 2,800+ components and</p>
+<p>242 jewels — a single unique piece (<a href="https://www.vacheron-constantin.com/us/en/watches/exceptional-timepieces/reference-57260.html">Vacheron Constantin</a>,</p>
+<p><a href="https://www.patek.com/en/collection/grand-complications/6300gr-001">Patek Philippe</a>).</p>
+<p>Multi-level BOMs are not a Richemont eccentricity, they are the entire discipline</p>
+<p>(<a href="https://edana.ch/en/2025/12/12/watchmaking-erp-managing-complexity-and-industrializing-swiss-excellence/">Edana</a>).</p>
+<p>Full detail: <a href="./sku-and-article-master.md">`sku-and-article-master.md`</a>.</p>
+<h2>Manufacturing — where a "supplier" is a Group asset</h2>
+<p>Ask Richemont "how integrated is your supply chain?" and the honest answer is *it</p>
+<p>depends which Maison*. The spectrum:</p>
+<ul>
+<li><strong>Full Manufacture</strong> (own movement design + production + assembly): <strong>Jaeger-LeCoultre</strong></li>
+</ul>
+<p>  (82 workshops, 1,200+ in-house calibre variants under one Vallée de Joux roof —</p>
+<p>  <a href="https://www.jaeger-lecoultre.com/us-en/our-maison/manufacture-since-1833">JLC</a>),</p>
+<p>  <strong>Vacheron Constantin</strong> (hairspring in-house at Le Brassus, cases and most dials</p>
+<p>  outsourced — <a href="https://watchesbysjx.com/2024/07/vacheron-constantin-manufacture-visit.html">WatchesBySJX</a>),</p>
+<p>  <strong>A. Lange & Söhne</strong> (70+ in-house calibres, hand-assembled twice on site —</p>
+<p>  <a href="https://www.alange-soehne.com/us-en/manufacture/art-of-watchmaking/manufacture-movements">A. Lange & Söhne</a>),</p>
+<p>  <strong>Roger Dubuis</strong> (~100% Poinçon de Genève certified —</p>
+<p>  <a href="https://www.rogerdubuis.com/our-maison/craftsmanship/poincon-de-geneve">Roger Dubuis</a>),</p>
+<p>  <strong>Piaget</strong> (in-house movement design plus Group refinery supplying 100% of its</p>
+<p>  fine gold — <a href="https://swisswatches-magazine.com/piaget-manufacture-visit-a-true-maison/">Swisswatches Magazine</a>).</p>
+<ul>
+<li><strong>Partial Manufacture</strong>: <strong>IWC</strong> — in-house from 1868, quartz-crisis outsourcing,</li>
+</ul>
+<p>  in-house design rebuilt from calibre 5000 in 2000 and the first in-house chronograph</p>
+<p>  (89360) in 2007; entry lines still use externally sourced ETA</p>
+<p>  (<a href="https://www.iwc.com/ch-en/journal/mechanical-marvels-part1">IWC</a>).</p>
+<p>  <strong>Cartier</strong> — La Chaux-de-Fonds manufacture (33,000 m², completed 2000) makes on</p>
+<p>  average one-third of components in-house; the rest is outsourced, with two-thirds of</p>
+<p>  hands coming from Universo and Aiguilla</p>
+<p>  (<a href="https://www.watchprozine.com/cartier/live-from-la-chaux-de-fonds-the-cartier-manufacture/3838926/886/">WatchProZine</a>).</p>
+<ul>
+<li><strong>Outsourced base movements</strong>: <strong>Montblanc and Panerai</strong> run on Group-supplied</li>
+</ul>
+<p>  ValFleurier calibres; <strong>Baume & Mercier</strong> ran ETA 2824-2 / Sellita SW200-1-based</p>
+<p>  calibres before the Damiani sale (<a href="https://calibercorner.com/baume-mercier-caliber-bm-112824/">CaliberCorner</a>,</p>
+<p>  <a href="https://wiki.grail-watch.com/index.php/ValFleurier">Grail Watch Wiki</a>).</p>
+<p>The distinctive Richemont move is that the Group <strong>buys</strong> parts of the subcontractor</p>
+<p>base rather than only contracting with it:</p>
+<ul>
+<li><strong>Manufacture Horlogère ValFleurier</strong> — Group movement house, 5–6 new calibres a</li>
+</ul>
+<p>  year, 20,000+ movements produced/finished, supplies Montblanc, Panerai, historically</p>
+<p>  Baume & Mercier (<a href="https://www.europastar.com/magazine/highlights/1002198110-val-fleurier-responds-to-richemont-s-movement.html">Europa Star</a>).</p>
+<ul>
+<li><strong>Donzé-Baume</strong> — cases and bracelets, ~300 employees, acquired November 2007</li>
+</ul>
+<p>  (<a href="https://www.richemont.com/news-media/press-releases-news/richemont-acquires-watch-component-manufacturer-done-baume-sa/">Richemont</a>).</p>
+<ul>
+<li><strong>Varinor / VVSA</strong> — precious-metals refining, RJC Chain-of-Custody certified for</li>
+</ul>
+<p>  gold and platinum, acquired October 2012</p>
+<p>  (<a href="https://www.richemont.com/news-media/press-releases-news/richemont-acquires-varin-etampage-and-varinor-vvsa/">Richemont</a>).</p>
+<ul>
+<li><strong>Roger Dubuis component-manufacturing arm</strong> — acquired September 2007, a year</li>
+</ul>
+<p>  before Richemont took the 60% equity stake in the Maison itself</p>
+<p>  (<a href="https://www.richemont.com/news-media/press-releases-news/richemont-acquires-component-manufacturing-operations-of-manufacturer-roger-dubuis-sa/">Richemont, 2007</a>).</p>
+<p><strong>Why Lillian cares</strong>: this changes the SAP model. Group-owned but legally separate</p>
+<p>component makers are candidates for <strong>subcontracting scenarios</strong> (SAP outsource</p>
+<p>manufacturing / scenario 30) with consigned components, <strong>not</strong> arm's-length vendor</p>
+<p>POs — and possibly for <strong>intercompany billing/STO</strong> logic rather than standard vendor</p>
+<p>invoicing. The SAP case study confirms "outsource manufacturing" was one of the four</p>
+<p>level-one processes piloted in the first six Maisons</p>
+<p>(<a href="https://news.sap.com/africa/2023/05/richemont-harmonizing-supply-chain-processes-between-group-business-and-suppliers/">SAP news</a>).</p>
+<p>The supplier network is quantifiable too. Richemont has ~700 direct suppliers, of</p>
+<p>which <strong>~460 are on the SAP Business Network</strong>, and **only 17 have their own-ERP</p>
+<p>integration back to Richemont** (<a href="https://www.sap.com/asset/dynamic/2023/04/de62229b-6e7e-0010-bca6-c68f7e60039b.html">SAP case study</a>).</p>
+<p>The captive Group makers (ValFleurier, Donzé-Baume, Varinor) are the plausible</p>
+<p>priorities for that 17; the long tail of independent dial/strap/case houses sits in</p>
+<p>portal-only, non-integrated tier.</p>
+<p>Distribution: <strong>1,392–1,393 internal boutiques + 1,071 franchised = ~2,463 total</strong></p>
+<p>(<a href="https://www.richemont.com/media/nptj0zrk/richemont-fy25-annual-results-presentation-en.pdf">Richemont FY25 results</a>),</p>
+<p>plus <strong>Watchfinder</strong> as the pre-owned lane buying/servicing/reselling 60+ brands</p>
+<p>(<a href="https://www.richemont.com/our-maisons/watchfinder-co/">Richemont</a>). Owned vs.</p>
+<p>franchised changes inventory ownership, which changes where consignment logic</p>
+<p>belongs — this is a data question, not just a store question.</p>
+<p>Full detail: <a href="./manufacturing-and-supply-chain.md">`manufacturing-and-supply-chain.md`</a>.</p>
+<h2>The regulatory data surface</h2>
+<p>Every regulation below is a set of *fields that must live on a material master or a</p>
+<p>batch record* — not a compliance memo. This is the layer that turns "data" into a</p>
+<p>concrete cost.</p>
+<ul>
+<li><strong>Kimberley Process</strong> on rough diamonds: certificate number, country of origin,</li>
+</ul>
+<p>  carat weight, USD value, HS code, exporter/importer IDs; ≥3 years for the</p>
+<p>  certificate, 5 years for trader records (<a href="https://www.worlddiamondcouncil.org/wp-content/uploads/2021/12/KP-Core-Document_20131122_amended.pdf">KP Core Document</a>).</p>
+<p>  Batch-managed material with the certificate travelling as batch attributes.</p>
+<ul>
+<li><strong>EU ESPR / Digital Product Passport</strong>: textiles/apparel confirmed for a 2027</li>
+</ul>
+<p>  delegated act (<a href="https://environment.ec.europa.eu/document/download/5f7ff5e2-ebe9-4bd4-a139-db881bd6398f_en?filename=FAQ-UPDATE-4th-Iteration_clean.pdf">European Commission ESPR FAQ</a>);</p>
+<p>  jewellery/watches not yet in the plan but under review — the material master will</p>
+<p>  need composition, substances-of-concern, recycled content, and repairability fields</p>
+<p>  the moment they land. From <strong>19 July 2026</strong>, large enterprises face a **ban on</p>
+<p>  destroying unsold apparel** with disclosure obligations</p>
+<p>  (<a href="https://green-forum.ec.europa.eu/implementing-ecodesign-sustainable-products-regulation_en">Green Forum, European Commission</a>) —</p>
+<p>  a direct hit on the fashion-Maison side of the estate.</p>
+<ul>
+<li><strong>Swiss Made "60% rule"</strong> (in force 1 January 2017): at least **60% of manufacturing</li>
+</ul>
+<p>  cost of the complete watch** must be Swiss-generated, and for the movement at least</p>
+<p>  <strong>60% of movement manufacturing cost</strong> with <strong>≥50% of component value</strong> Swiss-made,</p>
+<p>  R&D in Switzerland (<a href="https://www.ige.ch/en/law-and-policy/national-ip-law/indications-of-source/swiss-indications-of-source/industry-ordinances/revision-of-the-ordinance-on-the-use-of-swiss-for-watches">Swiss Federal Institute of Intellectual Property</a>).</p>
+<p>  This is a <strong>BOM cost-split</strong>: every component on every watch reference has to carry</p>
+<p>  its origin and unit cost in the material master, and the roll-up has to be auditable</p>
+<p>  per reference. This is not a report — it is a data model requirement.</p>
+<ul>
+<li><strong>Hallmarking</strong> — UK Assay Offices, French *poinçon de maître* with *livre de</li>
+</ul>
+<p>  police* transaction ledger held by the *bureau de garantie*, Swiss *Bureau central du</p>
+<p>  contrôle des métaux précieux* (<a href="https://www.gov.uk/government/publications/hallmarking-guidance-notes/hallmarking-is-the-law-guidance-summary">UK gov.uk</a>,</p>
+<p>  <a href="http://www.douane.gouv.fr/demarche/marquer-vos-ouvrages-dun-poincon-de-maitre-ou-de-responsabilite">Douanes françaises</a>).</p>
+<p>  Sponsor's mark + fineness + assay-office code as material or batch attributes.</p>
+<ul>
+<li><strong>German LkSG</strong> (≥1,000 employees since 2024) and <strong>EU CS3D</strong> (Directive</li>
+</ul>
+<p>  2024/1760, phasing in 2027–2029) — human-rights/environmental due diligence over</p>
+<p>  the entire chain of activities, with <strong>≥5 years' retention</strong> of due-diligence</p>
+<p>  documentation (<a href="https://eur-lex.europa.eu/eli/dir/2024/1760/oj/eng">EUR-Lex</a>). All</p>
+<p>  700+ direct suppliers become governed business partners in MDG-BP with risk-score</p>
+<p>  attributes.</p>
+<ul>
+<li><strong>CITES</strong> for exotic leathers (alligator, python) and coral — Appendix II permits,</li>
+</ul>
+<p>  species name, issuing country, permit position number, and Scientific Authority</p>
+<p>  non-detriment finding, on every strap and every skin lot (<a href="https://cites.org/eng/disc/text.php">CITES</a>).</p>
+<p>  Natural home is <strong>SAP GTS</strong> (Global Trade Services) for legal-control determination</p>
+<p>  at order/shipment creation.</p>
+<ul>
+<li><strong>GDPR / PIPL / CCPA</strong> across ELEVATE's <strong>45 markets and ~10,000 users</strong> — consent</li>
+</ul>
+<p>  flag, legal basis, Transfer Impact Assessment or SCC reference, PIPL security</p>
+<p>  assessment status, retention/deletion trigger — on every client record touched by</p>
+<p>  Salesforce, Cegid, and SAP simultaneously.</p>
+<p>Full detail: <a href="./regulatory-data-rules.md">`regulatory-data-rules.md`</a>.</p>
+<h2>The five questions that go a layer or two below "data"</h2>
+<p>For the interview itself, these are the questions that show Lillian has actually</p>
+<p>walked past the word and looked at what's under it:</p>
+<ol>
+<li>1. <strong>Article-master pattern</strong>: Does Richemont's Bluefield template model High Jewellery</li>
+</ol>
+<p>   one-of-a-kind pieces as unique lots (one material master = one serialized object),</p>
+<p>   or force them into Variant Configuration? And how far are Cartier and VCA — the two</p>
+<p>   Maisons where this most matters — from that target state today?</p>
+<ol>
+<li>2. <strong>Swiss Made cost-split</strong>: For the watch Maisons, is the 60% rule computed by rolling</li>
+</ol>
+<p>   up cost/origin fields on every component in the material master, or maintained as a</p>
+<p>   compliance overlay in EHS/Product Compliance? Bluefield preserves history — is the</p>
+<p>   pre-conversion cost-split trustworthy across all seven watch Maisons, or does it get</p>
+<p>   rebuilt at cutover?</p>
+<ol>
+<li>3. <strong>Group-owned suppliers as subcontractors, not vendors</strong>: Are ValFleurier,</li>
+</ol>
+<p>   Donzé-Baume, Varinor, and the Roger Dubuis component arm being modelled as</p>
+<p>   subcontracting POs with consigned precious-metal components and intercompany</p>
+<p>   billing, or are they still on standard third-party vendor flows? This is where a</p>
+<p>   quarter-billion of intra-Group volume can silently misclassify.</p>
+<ol>
+<li>4. <strong>Divestiture data carve-outs</strong>: With Baume & Mercier closed 1 July 2026 and YNAP</li>
+</ol>
+<p>   sold in April 2025, how much of the current landscape is *transition-service*</p>
+<p>   plumbing versus steady-state, and which of the ~120 SAP instances are still on the</p>
+<p>   books solely to keep those carve-outs running?</p>
+<ol>
+<li>5. <strong>Client-master across three systems</strong>: Salesforce (ELEVATE) owns the 360° view,</li>
+</ol>
+<p>   Cegid Y2 owns the transaction, SAP owns the finance. Where is the source-of-truth</p>
+<p>   for consent, transfer mechanism, and deletion — and how is that reconciled across</p>
+<p>   45 markets governed by GDPR, PIPL, and CCPA simultaneously?</p>
+<h2>What Lillian can safely name in the room</h2>
+<ul>
+<li><strong>~120 SAP instances</strong>, migrated to AWS end-2022, target state <strong>S/4HANA Bluefield</strong></li>
+</ul>
+<p>  under the <strong>New Foundations</strong> programme, template known internally as <strong>Gemini</strong>.</p>
+<ul>
+<li><strong>~20 Maisons</strong>, largest is <strong>Cartier</strong>, acquired since <strong>1979</strong>; <strong>YNAP</strong> sold to</li>
+</ul>
+<p>  Mytheresa <strong>April 2025</strong>; <strong>Baume & Mercier</strong> sold to Damiani, closing <strong>1 July 2026</strong>;</p>
+<p>  <strong>Buccellati</strong> and <strong>Vhernier</strong> not yet on Gemini.</p>
+<ul>
+<li><strong>Cartier ~1,400+ catalog models</strong> unpacking to <strong>3,000–10,000+ SAP materials</strong>; watch</li>
+</ul>
+<p>  BOMs from <strong>~130 components</strong> to <strong>2,800+</strong> at the top end.</p>
+<ul>
+<li><strong>~700 direct suppliers</strong>, <strong>~460 on SAP Business Network</strong>, only <strong>17</strong> with own-ERP</li>
+</ul>
+<p>  integration.</p>
+<ul>
+<li><strong>1,392 internal + 1,071 franchised = ~2,463 boutiques</strong>; <strong>ELEVATE</strong> = Salesforce +</li>
+</ul>
+<p>  GCP, <strong>~10,000 users, 45 markets, 11+ brands</strong>; <strong>Cegid Y2</strong> POS; <strong>Workday HCM</strong></p>
+<p>  live 2026.</p>
+<ul>
+<li><strong>Regulatory surface</strong>: Kimberley, ESPR/DPP (textiles first, 2027), Swiss Made 60%,</li>
+</ul>
+<p>  UK/French/Swiss hallmarking, LkSG + CS3D (5-year retention), CITES on exotic</p>
+<p>  leathers, GDPR/PIPL/CCPA across 45 markets.</p>
+<p>That is the layer or two below the word *data* Lillian needs to hold. Everything above</p>
+<p>is source-tagged so it can be re-checked. The detail files are in the same repo.</p>
+<p class="closing"><em>Pour le bien-être du peuple.</em></p>
+<footer class="colophon">
+  Detail briefs: <a href="https://github.com/EVEglyphDesign/lillian-richemont-prep">github.com/EVEglyphDesign/lillian-richemont-prep</a><br>
+  © 2026 EVEglyphDesign · Controlled copy · <em>Pour le bien-être du peuple.</em>
+</footer>
+</div>
+</body>
+</html>
